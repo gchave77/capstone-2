@@ -8,41 +8,35 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
 
 /**
- * This panel displays a 160-by-160 checkerboard pattern with
- * a 2-pixel black border.  It is assumed that the size of the
- * canvas is set to exactly 164-by-164 pixels.  This class does
- * the work of letting the users play checkers, and it displays
- * the checkerboard.
+ * This panel displays a checkerboard pattern with a 2-pixel black border.
+ * This class does the work of letting the users play checkers and displays the checkerboard.
  */
 public class Board extends JPanel implements ActionListener, MouseListener
 {
-    public JButton newGameButton;  // Button to starting a new game.
+    public JButton newGameButton;  // Button to start a new game.
     public JButton resignButton;   // Button to end a game.
-    public JLabel message;  // Label to display messages to the user.
+    public JLabel message;  // Label to display messages to the players.
 
     GameHistory board;  // The data for the checkers board is kept here.
-    //    This board is also responsible for generating
-    //    lists of legal moves.
+    //    This board is also responsible for generating lists of legal moves.
 
-    boolean gameInProgress; // Is a game currently in progress?
+    boolean gameInProgress; // Check for game in progress
 
     /* The next three variables are valid only when the game is in progress. */
 
-    int currentPlayer;      // Whose turn is it now?  The possible values
-    //    are GameHistory.RED and GameHistory.BLACK.
+    int currentPlayer;
+    // Whose turn is it now?  Possible values are GameHistory.RED and GameHistory.BLACK.
 
-    int selectedRow, selectedCol;  // If the current player has selected a piece to
-    //     move, these give the row and column
-    //     containing that piece.  If no piece is
-    //     yet selected, then selectedRow is -1.
+    int selectedRow, selectedCol;
+    // If the current player has selected a piece to move, these give the row and column
+    // containing that piece.  If no piece is yet selected, then selectedRow is -1.
 
-    Move[] legalMoves;  // An array containing the legal moves for the
-    //   current player.
+    Move[] legalMoves;
+    // An array containing the legal moves for the current player.
 
     /**
-     * Constructor.  Create the buttons and label.  Listens for mouse
-     * clicks and for clicks on the buttons.  Create the board and
-     * start the first game.
+     * Constructor.  Create the buttons and label.  Listens for mouse clicks and for clicks on the buttons.
+     * Create the board and start the first game.
      */
     Board() {
         setBackground(Color.BLACK);
@@ -58,7 +52,6 @@ public class Board extends JPanel implements ActionListener, MouseListener
         newGame();
     }
 
-
     /**
      * Respond to user's click on one of the two buttons.
      */
@@ -70,16 +63,15 @@ public class Board extends JPanel implements ActionListener, MouseListener
             resignGame();
     }
 
-
-    /**
-     * Start a new game
-     */
+//     * Start a new game
     void newGame() {
-        if (gameInProgress == true) {
-            // This should not be possible, but it doens't hurt to check.
+        try {
+            if (gameInProgress);
+        } catch (Exception e) {
             message.setText("Finish the current game first!");
-            return;
+//          Have some type of error handling for bad user input (incorrect key press, etc.)
         }
+
         board.setUpGame();   // Set up the pieces.
         currentPlayer = GameHistory.RED;   // RED moves first.
         legalMoves = board.getLegalMoves(GameHistory.RED);  // Get RED's legal moves.
@@ -91,12 +83,9 @@ public class Board extends JPanel implements ActionListener, MouseListener
         repaint();
     }
 
-
-    /**
-     * Current player resigns.  Game ends.  Opponent wins.
-     */
+//     * Current player resigns.  Game ends.  Opponent wins.
     void resignGame() {
-        if (gameInProgress == false) {
+        if (!gameInProgress) {
             message.setText("There is no game in progress!");
             return;
         }
@@ -339,7 +328,7 @@ public class Board extends JPanel implements ActionListener, MouseListener
      * clicked and call clickSquare() to handle it.
      */
     public void mousePressed(MouseEvent evt) {
-        if (gameInProgress == false)
+        if (!gameInProgress)
             message.setText("Click \"New Game\" to start a new game.");
         else {
             int col = (evt.getX() - 2) / 40;
