@@ -291,13 +291,13 @@ public class Board extends JPanel implements ActionListener, MouseListener
                         graphics.setColor(Color.RED);
                         graphics.fillOval(4 + col*40, 4 + row*40, 36, 36);
                         graphics.setColor(Color.WHITE);
-                        graphics.drawString("K", 14 + col*40, 36 + row*40);
+                        graphics.drawString("K", 18 + col*40, 26 + row*40);
                         break;
                     case GameHistory.BLACK_KING:
                         graphics.setColor(Color.BLACK);
                         graphics.fillOval(4 + col*40, 4 + row*40, 36, 36);
                         graphics.setColor(Color.WHITE);
-                        graphics.drawString("K", 14 + col*40, 36 + row*40);
+                        graphics.drawString("K", 18 + col*40, 26 + row*40);
                         break;
                 }
             }
