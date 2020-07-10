@@ -74,11 +74,12 @@ public class Board extends JPanel implements ActionListener, MouseListener
         currentPlayer = GameHistory.RED;   // RED moves first.
         legalMoves = board.getLegalMoves(GameHistory.RED);  // Get RED's legal moves.
         selectedRow = -1;   // RED has not yet selected a piece to move.
-        message.setText("Red:  Make your move.");
+        message.setText("Red:  Select a highlighted piece.");
         gameInProgress = true;
         newGameButton.setEnabled(false);
         resignButton.setEnabled(true);
         repaint();
+//     * Repaints the component (Component.java)
     }
 
 //     * Current player resigns.  Game ends.  Opponent wins.
@@ -125,9 +126,9 @@ public class Board extends JPanel implements ActionListener, MouseListener
                 selectedRow = row;
                 selectedCol = col;
                 if (currentPlayer == GameHistory.RED)
-                    message.setText("RED:  Make your move.");
+                    message.setText("RED:  Select your move or choose another piece.");
                 else
-                    message.setText("BLACK:  Make your move.");
+                    message.setText("BLACK:  Select your move or choose another piece.");
                 repaint();
                 return;
             }
@@ -198,9 +199,9 @@ public class Board extends JPanel implements ActionListener, MouseListener
             if (legalMoves == null)
                 gameOver("BLACK has no moves.  RED wins.");
             else if (legalMoves[0].isJump())
-                message.setText("BLACK:  Make your move.  You must jump.");
+                message.setText("BLACK:  Make your move3.  You must jump.");
             else
-                message.setText("BLACK:  Make your move.");
+                message.setText("BLACK:  Select a highlighted piece.");
         }
         else {
             currentPlayer = GameHistory.RED;
@@ -208,9 +209,9 @@ public class Board extends JPanel implements ActionListener, MouseListener
             if (legalMoves == null)
                 gameOver("RED has no moves.  BLACK wins.");
             else if (legalMoves[0].isJump())
-                message.setText("RED:  Make your move.  You must jump.");
+                message.setText("RED:  Make your move5.  You must jump.");
             else
-                message.setText("RED:  Make your move.");
+                message.setText("RED:  Select a highlighted piece.");
         }
 
          /* Set selectedRow = -1 to record that the player has not yet selected
