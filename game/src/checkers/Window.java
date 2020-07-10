@@ -14,7 +14,7 @@ public class Window extends JPanel
     public Window() {
 
         setLayout(null);  // set layout below
-        setPreferredSize( new Dimension(350,250) );
+        setPreferredSize( new Dimension(600,500) );
 
         setBackground(new Color(3,100,250));  // blue background
 
@@ -30,10 +30,10 @@ public class Window extends JPanel
       /* Set the position and size of each component by calling
        its setBounds() method. */
 
-        board.setBounds(20,20,164,164); // Note:  size MUST be 164-by-164 !
-        board.newGameButton.setBounds(210, 60, 120, 30);
-        board.resignButton.setBounds(210, 120, 120, 30);
-        board.message.setBounds(0, 200, 350, 30);
+        board.setBounds(40,40,328,328); // Note:  size MUST be 164-by-164 !
+        board.newGameButton.setBounds(420, 60, 120, 30);
+        board.resignButton.setBounds(420, 120, 120, 30);
+        board.message.setBounds(0, 400, 600, 30);
 
     } // end constructor
 
