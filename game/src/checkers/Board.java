@@ -260,43 +260,44 @@ public class Board extends JPanel implements ActionListener, MouseListener
      * Draw  checkerboard pattern in gray and lightGray.  Draw the
      * checkers.  If a game is in progress, hilite the legal moves.
      */
-    public void paintComponent(Graphics g) {
+    public void paintComponent(Graphics graphics) {
 
         /* Draw a two-pixel black border around the edges of the canvas. */
 
-        g.setColor(Color.black);
-        g.drawRect(0,0,getSize().width-1,getSize().height-1);
-        g.drawRect(1,1,getSize().width-3,getSize().height-3);
+        graphics.setColor(Color.black);
+        graphics.drawRect(0,0,getSize().width-1,getSize().height-1);
+        graphics.drawRect(1,1,getSize().width-3,getSize().height-3);
 
         /* Draw the squares of the checkerboard and the checkers. */
 
         for (int row = 0; row < 8; row++) {
             for (int col = 0; col < 8; col++) {
                 if ( row % 2 == col % 2 )
-                    g.setColor(Color.LIGHT_GRAY);
+                    graphics.setColor(Color.LIGHT_GRAY);
                 else
-                    g.setColor(Color.GRAY);
-                g.fillRect(2 + col*20, 2 + row*20, 20, 20);
+                    graphics.setColor(Color.GRAY);
+//              Draws the outline of the specified rectangle (Graphics.java)
+                graphics.fillRect(2 + col*20, 2 + row*20, 20, 20);
                 switch (board.pieceAt(row,col)) {
                     case GameHistory.RED:
-                        g.setColor(Color.RED);
-                        g.fillOval(4 + col*20, 4 + row*20, 15, 15);
+                        graphics.setColor(Color.RED);
+                        graphics.fillOval(4 + col*20, 4 + row*20, 15, 15);
                         break;
                     case GameHistory.BLACK:
-                        g.setColor(Color.BLACK);
-                        g.fillOval(4 + col*20, 4 + row*20, 15, 15);
+                        graphics.setColor(Color.BLACK);
+                        graphics.fillOval(4 + col*20, 4 + row*20, 15, 15);
                         break;
                     case GameHistory.RED_KING:
-                        g.setColor(Color.RED);
-                        g.fillOval(4 + col*20, 4 + row*20, 15, 15);
-                        g.setColor(Color.WHITE);
-                        g.drawString("K", 7 + col*20, 16 + row*20);
+                        graphics.setColor(Color.RED);
+                        graphics.fillOval(4 + col*20, 4 + row*20, 15, 15);
+                        graphics.setColor(Color.WHITE);
+                        graphics.drawString("K", 7 + col*20, 16 + row*20);
                         break;
                     case GameHistory.BLACK_KING:
-                        g.setColor(Color.BLACK);
-                        g.fillOval(4 + col*20, 4 + row*20, 15, 15);
-                        g.setColor(Color.WHITE);
-                        g.drawString("K", 7 + col*20, 16 + row*20);
+                        graphics.setColor(Color.BLACK);
+                        graphics.fillOval(4 + col*20, 4 + row*20, 15, 15);
+                        graphics.setColor(Color.WHITE);
+                        graphics.drawString("K", 7 + col*20, 16 + row*20);
                         break;
                 }
             }
@@ -307,23 +308,23 @@ public class Board extends JPanel implements ActionListener, MouseListener
 
         if (gameInProgress) {
             /* First, draw a 2-pixel cyan border around the pieces that can be moved. */
-            g.setColor(Color.cyan);
+            graphics.setColor(Color.cyan);
             for (int i = 0; i < legalMoves.length; i++) {
-                g.drawRect(2 + legalMoves[i].fromCol*20, 2 + legalMoves[i].fromRow*20, 19, 19);
-                g.drawRect(3 + legalMoves[i].fromCol*20, 3 + legalMoves[i].fromRow*20, 17, 17);
+                graphics.drawRect(2 + legalMoves[i].fromCol*20, 2 + legalMoves[i].fromRow*20, 19, 19);
+                graphics.drawRect(3 + legalMoves[i].fromCol*20, 3 + legalMoves[i].fromRow*20, 17, 17);
             }
                /* If a piece is selected for moving (i.e. if selectedRow >= 0), then
                 draw a 2-pixel white border around that piece and draw green borders
                 around each square that that piece can be moved to. */
             if (selectedRow >= 0) {
-                g.setColor(Color.white);
-                g.drawRect(2 + selectedCol*20, 2 + selectedRow*20, 19, 19);
-                g.drawRect(3 + selectedCol*20, 3 + selectedRow*20, 17, 17);
-                g.setColor(Color.green);
+                graphics.setColor(Color.white);
+                graphics.drawRect(2 + selectedCol*20, 2 + selectedRow*20, 19, 19);
+                graphics.drawRect(3 + selectedCol*20, 3 + selectedRow*20, 17, 17);
+                graphics.setColor(Color.green);
                 for (int i = 0; i < legalMoves.length; i++) {
                     if (legalMoves[i].fromCol == selectedCol && legalMoves[i].fromRow == selectedRow) {
-                        g.drawRect(2 + legalMoves[i].toCol*20, 2 + legalMoves[i].toRow*20, 19, 19);
-                        g.drawRect(3 + legalMoves[i].toCol*20, 3 + legalMoves[i].toRow*20, 17, 17);
+                        graphics.drawRect(2 + legalMoves[i].toCol*20, 2 + legalMoves[i].toRow*20, 19, 19);
+                        graphics.drawRect(3 + legalMoves[i].toCol*20, 3 + legalMoves[i].toRow*20, 17, 17);
                     }
                 }
             }
@@ -354,4 +355,5 @@ public class Board extends JPanel implements ActionListener, MouseListener
     public void mouseExited(MouseEvent evt) { }
 
 
-}  // end class Board
+}
+

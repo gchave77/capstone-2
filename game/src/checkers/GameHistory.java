@@ -291,4 +291,5 @@ public class GameHistory
     }  // end canMove()
 
 
-} // end class GameHistory
+}
+

@@ -24,4 +24,5 @@ public class Move
         // rows.  (In a regular move, it only moves one row.)
         return (fromRow - toRow == 2 || fromRow - toRow == -2);
     }
-}  // end class Move.
+}
+
