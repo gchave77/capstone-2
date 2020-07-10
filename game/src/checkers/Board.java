@@ -55,7 +55,7 @@ public class Board extends JPanel implements ActionListener, MouseListener
         message.setFont(new  Font("Serif", Font.BOLD, 14));
         message.setForeground(Color.white);
         board = new GameHistory();
-        doNewGame();
+        newGame();
     }
 
 
@@ -65,16 +65,16 @@ public class Board extends JPanel implements ActionListener, MouseListener
     public void actionPerformed(ActionEvent evt) {
         Object src = evt.getSource();
         if (src == newGameButton)
-            doNewGame();
+            newGame();
         else if (src == resignButton)
-            doResign();
+            resignGame();
     }
 
 
     /**
      * Start a new game
      */
-    void doNewGame() {
+    void newGame() {
         if (gameInProgress == true) {
             // This should not be possible, but it doens't hurt to check.
             message.setText("Finish the current game first!");
@@ -95,7 +95,7 @@ public class Board extends JPanel implements ActionListener, MouseListener
     /**
      * Current player resigns.  Game ends.  Opponent wins.
      */
-    void doResign() {
+    void resignGame() {
         if (gameInProgress == false) {
             message.setText("There is no game in progress!");
             return;
@@ -126,7 +126,7 @@ public class Board extends JPanel implements ActionListener, MouseListener
      * square in the specified row and col.  It has already been checked
      * that a game is, in fact, in progress.
      */
-    void doClickSquare(int row, int col) {
+    void clickSquare(int row, int col) {
 
          /* If the player clicked on one of the pieces that the player
           can move, mark this row and col as selected and return.  (This
@@ -159,7 +159,7 @@ public class Board extends JPanel implements ActionListener, MouseListener
         for (int i = 0; i < legalMoves.length; i++)
             if (legalMoves[i].fromRow == selectedRow && legalMoves[i].fromCol == selectedCol
                     && legalMoves[i].toRow == row && legalMoves[i].toCol == col) {
-                doMakeMove(legalMoves[i]);
+                makeMove(legalMoves[i]);
                 return;
             }
 
@@ -167,9 +167,9 @@ public class Board extends JPanel implements ActionListener, MouseListener
           the user just clicked is not one where that piece can be legally moved.
           Show an error message. */
 
-        message.setText("Click the square you want to move to.");
+        message.setText("Click a legal square to move, or choose a new checker");
 
-    }  // end doClickSquare()
+    }  // end clickSquare()
 
 
     /**
@@ -177,7 +177,7 @@ public class Board extends JPanel implements ActionListener, MouseListener
      * move.  Make the move, and then either end or continue the game
      * appropriately.
      */
-    void doMakeMove(Move move) {
+    void makeMove(Move move) {
 
         board.makeMove(move);
 
@@ -253,7 +253,7 @@ public class Board extends JPanel implements ActionListener, MouseListener
 
         repaint();
 
-    }  // end doMakeMove();
+    }  // end makeMove();
 
 
     /**
@@ -335,7 +335,7 @@ public class Board extends JPanel implements ActionListener, MouseListener
     /**
      * Respond to a user click on the board.  If no game is in progress, show
      * an error message.  Otherwise, find the row and column that the user
-     * clicked and call doClickSquare() to handle it.
+     * clicked and call clickSquare() to handle it.
      */
     public void mousePressed(MouseEvent evt) {
         if (gameInProgress == false)
@@ -344,7 +344,7 @@ public class Board extends JPanel implements ActionListener, MouseListener
             int col = (evt.getX() - 2) / 20;
             int row = (evt.getY() - 2) / 20;
             if (col >= 0 && col < 8 && row >= 0 && row < 8)
-                doClickSquare(row,col);
+                clickSquare(row,col);
         }
     }
 
