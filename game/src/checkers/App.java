@@ -18,7 +18,7 @@ public class App extends JPanel
          * the program ends when the user closes the window.
          */
         JFrame window = new JFrame("Checkers");
-        App content = new App();
+        JPanel content = new App();
         window.setContentPane(content);
         window.pack();
         Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();

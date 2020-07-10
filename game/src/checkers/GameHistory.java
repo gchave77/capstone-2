@@ -3,18 +3,15 @@ package checkers;
 import java.util.ArrayList;
 
 /**
- * An object of this class holds data about a game of checkers.
- * It knows what kind of piece is on each square of the checkerboard.
- * Note that RED moves "up" the board (i.e. row number decreases)
- * while BLACK moves "down" the board (i.e. row number increases).
+ * This class holds data about a game of checkers, and keeps track of pieces on each square of the checkerboard.
+ * RED pieces move "up" the board (row number decreases)
+ * BLACK pieces move "down" the board (row number increases).
  * Methods are provided to return lists of available legal moves.
  */
 public class GameHistory
 {
-
-      /*  The following constants represent the possible contents of a square
-          on the board.  The constants RED and BLACK also represent players
-          in the game. */
+      /*  These constants represent the possible contents of a square on the board.
+      The constants RED and BLACK also represent players in the game. */
 
     static final int
             EMPTY = 0,
@@ -23,9 +20,7 @@ public class GameHistory
             BLACK = 3,
             BLACK_KING = 4;
 
-
     int[][] board;  // board[r][c] is the contents of row r, column c.
-
 
     /**
      * Constructor.  Create the board and set it up for a new game.
@@ -35,18 +30,14 @@ public class GameHistory
         setUpGame();
     }
 
-
     /**
-     * Set up the board with checkers in position for the beginning
-     * of a game.  Note that checkers can only be found in squares
-     * that satisfy  row % 2 == col % 2.  At the start of the game,
-     * all such squares in the first three rows contain black squares
-     * and all such squares in the last three rows contain red squares.
+     * Set up the board with checkers in position for the beginning of a game.
+     * Note that checkers can only be found in squares that satisfy row % 2 != col % 2.
      */
     void setUpGame() {
         for (int row = 0; row < 8; row++) {
             for (int col = 0; col < 8; col++) {
-                if ( row % 2 == col % 2 ) {
+                if ( row % 2 != col % 2 ) {
                     if (row < 3)
                         board[row][col] = BLACK;
                     else if (row > 4)
@@ -59,8 +50,7 @@ public class GameHistory
                 }
             }
         }
-    }  // end setUpGame()
-
+    }
 
     /**
      * Return the contents of the square in the specified row and column.
@@ -71,13 +61,11 @@ public class GameHistory
 
     /**
      * Set the contents of the square in the specified row and column.
-     * piece must be one of the constants EMPTY, RED, BLACK, RED_KING,
-     * BLACK_KING.
+     * A piece must be one of the constants EMPTY, RED, BLACK, RED_KING, BLACK_KING.
      */
     void setPieceAt(int row, int col, int piece) {
         board[row][col] = piece;
     }
-
 
     /**
      * Make the specified move.  It is assumed that move
@@ -87,13 +75,10 @@ public class GameHistory
         makeMove(move.fromRow, move.fromCol, move.toRow, move.toCol);
     }
 
-
     /**
-     * Make the move from (fromRow,fromCol) to (toRow,toCol).  It is
-     * assumed that this move is legal.  If the move is a jump, the
-     * jumped piece is removed from the board.  If a piece moves
-     * the last row on the opponent's side of the board, the
-     * piece becomes a king.
+     * Make the move from (fromRow,fromCol) to (toRow,toCol).  It is assumed that this move is legal.
+     * If the move is a jump, the jumped piece is removed from the board.
+     * If a piece moves the last row on the opponent's side of the board, it becomes a king.
      */
     void makeMove(int fromRow, int fromCol, int toRow, int toCol) {
         board[toRow][toCol] = board[fromRow][fromCol];
@@ -111,8 +96,8 @@ public class GameHistory
     }
 
     /**
-     * Return an array containing all the legal CheckersMoves
-     * for the specfied player on the current board.  If the player
+     * Return an array containing all the legal Checker Moves
+     * for the specified player on the current board.  If the player
      * has no legal moves, null is returned.  The value of player
      * should be one of the constants RED or BLACK; if not, null
      * is returned.  If the returned value is non-null, it consists
