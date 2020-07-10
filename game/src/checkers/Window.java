@@ -14,7 +14,7 @@ public class Window extends JPanel
     public Window() {
 
         setLayout(null);  // set layout below
-        setPreferredSize( new Dimension(600,500) );
+        setPreferredSize( new Dimension(600,475) );
 
         setBackground(new Color(3,100,250));  // blue background
 

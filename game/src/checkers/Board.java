@@ -23,7 +23,6 @@ public class Board extends JPanel implements ActionListener, MouseListener
     boolean gameInProgress; // Check for game in progress
 
     /* The next three variables are valid only when the game is in progress. */
-
     int currentPlayer;
     // Whose turn is it now?  Possible values are GameHistory.RED and GameHistory.BLACK.
 
@@ -52,11 +51,10 @@ public class Board extends JPanel implements ActionListener, MouseListener
         newGame();
     }
 
-    /**
-     * Respond to user's click on one of the two buttons.
-     */
-    public void actionPerformed(ActionEvent evt) {
-        Object src = evt.getSource();
+//     * Respond to user's click on one of the two buttons.
+
+    public void actionPerformed(ActionEvent event) {
+        Object src = event.getSource();
         if (src == newGameButton)
             newGame();
         else if (src == resignButton)
@@ -246,19 +244,16 @@ public class Board extends JPanel implements ActionListener, MouseListener
 
 
     /**
-     * Draw  checkerboard pattern in gray and lightGray.  Draw the
-     * checkers.  If a game is in progress, hilite the legal moves.
+     * Draw  checkerboard pattern in gray and lightGray.  Draw the checkers.
+     * If a game is in progress, highlight the legal moves.
      */
     public void paintComponent(Graphics graphics) {
-
-        /* Draw a two-pixel black border around the edges of the canvas. */
-
+        /* Draw a two-pixel black border around the edges of the canvas. (Graphics.java) */
         graphics.setColor(Color.black);
         graphics.drawRect(0,0,getSize().width-1,getSize().height-1);
         graphics.drawRect(1,1,getSize().width-3,getSize().height-3);
 
         /* Draw the squares of the checkerboard and the checkers. */
-
         for (int row = 0; row < 8; row++) {
             for (int col = 0; col < 8; col++) {
                 if ( row % 2 == col % 2 )
@@ -266,25 +261,25 @@ public class Board extends JPanel implements ActionListener, MouseListener
                 else
                     graphics.setColor(Color.GRAY);
 //              Draws the outline of the specified rectangle (Graphics.java)
-                graphics.fillRect(2 + col*40, 2 + row*40, 40, 40);
+                graphics.fillRect(4 + col*40, 4 + row*40, 40, 40);
                 switch (board.pieceAt(row,col)) {
                     case GameHistory.RED:
                         graphics.setColor(Color.RED);
-                        graphics.fillOval(4 + col*40, 4 + row*40, 36, 36);
+                        graphics.fillOval(6 + col*40, 6 + row*40, 36, 36);
                         break;
                     case GameHistory.BLACK:
                         graphics.setColor(Color.BLACK);
-                        graphics.fillOval(4 + col*40, 4 + row*40, 36, 36);
+                        graphics.fillOval(6 + col*40, 6 + row*40, 36, 36);
                         break;
                     case GameHistory.RED_KING:
                         graphics.setColor(Color.RED);
-                        graphics.fillOval(4 + col*40, 4 + row*40, 36, 36);
+                        graphics.fillOval(6 + col*40, 6 + row*40, 36, 36);
                         graphics.setColor(Color.WHITE);
                         graphics.drawString("K", 18 + col*40, 26 + row*40);
                         break;
                     case GameHistory.BLACK_KING:
                         graphics.setColor(Color.BLACK);
-                        graphics.fillOval(4 + col*40, 4 + row*40, 36, 36);
+                        graphics.fillOval(6 + col*40, 6 + row*40, 36, 36);
                         graphics.setColor(Color.WHITE);
                         graphics.drawString("K", 18 + col*40, 26 + row*40);
                         break;
@@ -292,57 +287,56 @@ public class Board extends JPanel implements ActionListener, MouseListener
             }
         }
 
-         /* If a game is in progress, hilite the legal moves.   Note that legalMoves
-          is never null while a game is in progress. */
-
+         /* If a game is in progress, highlight the legal moves.
+         Note: legalMoves is never null while a game is in progress. */
         if (gameInProgress) {
             /* First, draw a 2-pixel cyan border around the pieces that can be moved. */
             graphics.setColor(Color.cyan);
             for (int i = 0; i < legalMoves.length; i++) {
-                graphics.drawRect(2 + legalMoves[i].fromCol*40, 2 + legalMoves[i].fromRow*40, 38, 38);
-                graphics.drawRect(3 + legalMoves[i].fromCol*40, 3 + legalMoves[i].fromRow*40, 38, 38);
+                graphics.drawRect(4 + legalMoves[i].fromCol*40, 4 + legalMoves[i].fromRow*40, 38, 38);
+                graphics.drawRect(5 + legalMoves[i].fromCol*40, 5 + legalMoves[i].fromRow*40, 38, 38);
             }
-               /* If a piece is selected for moving (i.e. if selectedRow >= 0), then
-                draw a 2-pixel white border around that piece and draw green borders
-                around each square that that piece can be moved to. */
+               /* If a piece is selected for moving (i.e. if selectedRow >= 0), then draw a 2-pixel white border
+               around that piece and draw green borders around each square that the piece can move to. */
             if (selectedRow >= 0) {
                 graphics.setColor(Color.white);
-                graphics.drawRect(2 + selectedCol*40, 2 + selectedRow*40, 38, 38);
-                graphics.drawRect(3 + selectedCol*40, 3 + selectedRow*40, 38, 38);
+                graphics.drawRect(4 + selectedCol*40, 4 + selectedRow*40, 38, 38);
+                graphics.drawRect(5 + selectedCol*40, 5 + selectedRow*40, 38, 38);
                 graphics.setColor(Color.green);
                 for (int i = 0; i < legalMoves.length; i++) {
                     if (legalMoves[i].fromCol == selectedCol && legalMoves[i].fromRow == selectedRow) {
-                        graphics.drawRect(2 + legalMoves[i].toCol*40, 2 + legalMoves[i].toRow*40, 38, 38);
-                        graphics.drawRect(3 + legalMoves[i].toCol*40, 3 + legalMoves[i].toRow*40, 38, 38);
+                        graphics.drawRect(4 + legalMoves[i].toCol*40, 4 + legalMoves[i].toRow*40, 38, 38);
+                        graphics.drawRect(5 + legalMoves[i].toCol*40, 5 + legalMoves[i].toRow*40, 38, 38);
                     }
                 }
             }
         }
-
-    }  // end paintComponent()
-
+    }  // end paintCompone
 
     /**
-     * Respond to a user click on the board.  If no game is in progress, show
-     * an error message.  Otherwise, find the row and column that the user
-     * clicked and call clickSquare() to handle it.
+     * Respond to a user click on the board.  If no game is in progress, show an error message.
+     * Otherwise, find the row and column that the user clicked and call clickSquare() to handle it.
      */
-    public void mousePressed(MouseEvent evt) {
+    public void mousePressed(MouseEvent event) {
         if (!gameInProgress)
             message.setText("Click \"New Game\" to start a new game.");
         else {
-            int col = (evt.getX() - 2) / 40;
-            int row = (evt.getY() - 2) / 40;
+            int col = (event.getX() - 2) / 40;
+            int row = (event.getY() - 2) / 40;
             if (col >= 0 && col < 8 && row >= 0 && row < 8)
                 clickSquare(row,col);
         }
     }
 
-    public void mouseReleased(MouseEvent evt) { }
-    public void mouseClicked(MouseEvent evt) { }
-    public void mouseEntered(MouseEvent evt) { }
-    public void mouseExited(MouseEvent evt) { }
-
+    public void mouseReleased(MouseEvent event) { }
+    public void mouseClicked(MouseEvent event) { }
+    public void mouseEntered(MouseEvent event) { }
+    public void mouseExited(MouseEvent event) { }
 
 }
 
+//@FunctionalInterface
+//interface LambdaEvent
+//{
+//    List<String> calc(List<String> list, boolean mutate);
+//}
