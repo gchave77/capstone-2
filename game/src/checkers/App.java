@@ -31,8 +31,8 @@ public class App extends JPanel
     }
 
     public App() {
-        Window window = new Window();
-        add(window);
+        JPanel JPanel = new Window();
+        add(JPanel);
     }
 
 }
