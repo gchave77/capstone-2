@@ -53,7 +53,7 @@ public class Board extends JPanel implements ActionListener, MouseListener
         newGameButton.addActionListener(this);
         message = new JLabel("",JLabel.CENTER);
         message.setFont(new  Font("Serif", Font.BOLD, 14));
-        message.setForeground(Color.green);
+        message.setForeground(Color.white);
         board = new GameHistory();
         doNewGame();
     }
