@@ -28,7 +28,8 @@ public class Tile extends Rectangle
         setHeight(CheckersApp.TILE_SIZE);
         relocate(x * CheckersApp.TILE_SIZE, y * CheckersApp.TILE_SIZE);
 
-        setFill(light ? Color.valueOf("#ebf0f2") : Color.valueOf("#1e84d0"));
+//        setFill(light ? Color.valueOf("#ebf0f2") : Color.valueOf("#1e84d0"));
+        setFill(light ? Color.LIGHTGREY : Color.GRAY);
 
     }
 
