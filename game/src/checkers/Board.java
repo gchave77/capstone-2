@@ -17,14 +17,14 @@ public class Board extends JPanel implements ActionListener, MouseListener
     public JButton resignButton;   // Button to end a game.
     public JLabel message;  // Label to display messages to the players.
 
-    GameHistory board;  // The data for the checkers board is kept here.
+    GameState board;  // The data for the checkers board is kept here.
     //    This board is also responsible for generating lists of legal moves.
 
     boolean gameInProgress; // Check for game in progress
 
     /* The next three variables are valid only when the game is in progress. */
     int currentPlayer;
-    // Whose turn is it now?  Possible values are GameHistory.RED and GameHistory.BLACK.
+    // Whose turn is it now?  Possible values are GameState.RED and GameState.BLACK.
 
     int selectedRow, selectedCol;
     // If the current player has selected a piece to move, these give the row and column
@@ -47,7 +47,7 @@ public class Board extends JPanel implements ActionListener, MouseListener
         message = new JLabel("",JLabel.CENTER);
         message.setFont(new  Font("Serif", Font.BOLD, 18));
         message.setForeground(Color.white);
-        board = new GameHistory();
+        board = new GameState();
         newGame();
     }
 
@@ -71,8 +71,8 @@ public class Board extends JPanel implements ActionListener, MouseListener
         }
 
         board.setUpGame();   // Set up the pieces.
-        currentPlayer = GameHistory.RED;   // RED moves first.
-        legalMoves = board.getLegalMoves(GameHistory.RED);  // Get RED's legal moves.
+        currentPlayer = GameState.RED;   // RED moves first.
+        legalMoves = board.getLegalMoves(GameState.RED);  // Get RED's legal moves.
         selectedRow = -1;   // RED has not yet selected a piece to move.
         message.setText("Red:  Select a highlighted piece.");
         gameInProgress = true;
@@ -88,7 +88,7 @@ public class Board extends JPanel implements ActionListener, MouseListener
             message.setText("There is no game in progress!");
             return;
         }
-        if (currentPlayer == GameHistory.RED)
+        if (currentPlayer == GameState.RED)
             gameOver("RED resigns.  BLACK wins.");
         else
             gameOver("BLACK resigns.  RED wins.");
@@ -125,7 +125,7 @@ public class Board extends JPanel implements ActionListener, MouseListener
             if (legalMoves[i].fromRow == row && legalMoves[i].fromCol == col) {
                 selectedRow = row;
                 selectedCol = col;
-                if (currentPlayer == GameHistory.RED)
+                if (currentPlayer == GameState.RED)
                     message.setText("RED:  Select your move or choose another piece.");
                 else
                     message.setText("BLACK:  Select your move or choose another piece.");
@@ -178,7 +178,7 @@ public class Board extends JPanel implements ActionListener, MouseListener
         if (move.isJump()) {
             legalMoves = board.getLegalJumpsFrom(currentPlayer,move.toRow,move.toCol);
             if (legalMoves != null) {
-                if (currentPlayer == GameHistory.RED)
+                if (currentPlayer == GameState.RED)
                     message.setText("RED:  You must continue jumping.");
                 else
                     message.setText("BLACK:  You must continue jumping.");
@@ -193,8 +193,8 @@ public class Board extends JPanel implements ActionListener, MouseListener
           Get that player's legal moves.  If the player has no legal moves,
           then the game ends. */
 
-        if (currentPlayer == GameHistory.RED) {
-            currentPlayer = GameHistory.BLACK;
+        if (currentPlayer == GameState.RED) {
+            currentPlayer = GameState.BLACK;
             legalMoves = board.getLegalMoves(currentPlayer);
             if (legalMoves == null)
                 gameOver("BLACK has no moves.  RED wins.");
@@ -204,7 +204,7 @@ public class Board extends JPanel implements ActionListener, MouseListener
                 message.setText("BLACK:  Select a highlighted piece.");
         }
         else {
-            currentPlayer = GameHistory.RED;
+            currentPlayer = GameState.RED;
             legalMoves = board.getLegalMoves(currentPlayer);
             if (legalMoves == null)
                 gameOver("RED has no moves.  BLACK wins.");
@@ -264,21 +264,21 @@ public class Board extends JPanel implements ActionListener, MouseListener
 //              Draws the outline of the specified rectangle (Graphics.java)
                 graphics.fillRect(4 + col*40, 4 + row*40, 40, 40);
                 switch (board.pieceAt(row,col)) {
-                    case GameHistory.RED:
+                    case GameState.RED:
                         graphics.setColor(Color.RED);
                         graphics.fillOval(6 + col*40, 6 + row*40, 36, 36);
                         break;
-                    case GameHistory.BLACK:
+                    case GameState.BLACK:
                         graphics.setColor(Color.BLACK);
                         graphics.fillOval(6 + col*40, 6 + row*40, 36, 36);
                         break;
-                    case GameHistory.RED_KING:
+                    case GameState.RED_KING:
                         graphics.setColor(Color.RED);
                         graphics.fillOval(6 + col*40, 6 + row*40, 36, 36);
                         graphics.setColor(Color.WHITE);
                         graphics.drawString("K", 18 + col*40, 26 + row*40);
                         break;
-                    case GameHistory.BLACK_KING:
+                    case GameState.BLACK_KING:
                         graphics.setColor(Color.BLACK);
                         graphics.fillOval(6 + col*40, 6 + row*40, 36, 36);
                         graphics.setColor(Color.WHITE);

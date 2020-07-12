@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * BLACK pieces move "down" the board (row number increases).
  * Methods are provided to return lists of available legal moves.
  */
-public class GameHistory
+public class GameState
 {
       /*  These constants represent the possible contents of a square on the board.
       The constants RED and BLACK also represent players in the game. */
@@ -25,7 +25,7 @@ public class GameHistory
     /**
      * Constructor.  Create the board and set it up for a new game.
      */
-    GameHistory() {
+    GameState() {
         board = new int[8][8];
         setUpGame();
     }
