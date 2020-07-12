@@ -1,6 +1,6 @@
 package myCheckers;
 
-public class MoveResult
+public class MoveState
 {
     private MoveType type;
 
@@ -14,11 +14,11 @@ public class MoveResult
         return piece;
     }
 
-    public MoveResult(MoveType type) {
+    public MoveState(MoveType type) {
         this(type, null);
     }
 
-    public MoveResult(MoveType type, Piece piece) {
+    public MoveState(MoveType type, Piece piece) {
         this.type = type;
         this.piece = piece;
     }

@@ -59,10 +59,10 @@ public class Board
             int newX = toBoard(piece.getLayoutX());
             int newY = toBoard(piece.getLayoutY());
 
-            MoveResult result;
+            MoveState result;
 
             if (newX < 0 || newY < 0 || newX >= WIDTH || newY >= HEIGHT) {
-                result = new MoveResult(MoveType.NONE);
+                result = new MoveState(MoveType.NONE);
             } else {
                 result = tryMove(piece, newX, newY);
             }
