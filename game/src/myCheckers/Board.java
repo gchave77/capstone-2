@@ -55,6 +55,7 @@ public class Board
     private static Piece makePiece(PieceType type, int x, int y) {
         Piece piece = new Piece(type, x, y);
 
+        // Lambda
         piece.setOnMouseReleased(e -> {
             int newX = toBoard(piece.getLayoutX());
             int newY = toBoard(piece.getLayoutY());
@@ -62,14 +63,17 @@ public class Board
             MoveState result;
 
             if (newX < 0 || newY < 0 || newX >= WIDTH || newY >= HEIGHT) {
+                // piece not moved so result is no move
                 result = new MoveState(MoveType.NONE);
             } else {
+                // piece has attempted move, so gather data of attempted move
                 result = tryMove(piece, newX, newY);
             }
 
             int x0 = toBoard(piece.getOldX());
             int y0 = toBoard(piece.getOldY());
 
+            // validate the attempted move
             switch (result.getType()) {
                 case NONE:
                     // cancel illegal move

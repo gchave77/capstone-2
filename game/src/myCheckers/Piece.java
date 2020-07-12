@@ -31,9 +31,8 @@ public class Piece extends StackPane
         this.type = type;
 
         move(x, y);
-//        relocate(x * TILE_SIZE, y * TILE_SIZE);
 
-//  create checkers with Class import of TILE_SIZE
+        // create checkers with Class import of TILE_SIZE
         Ellipse bg = new Ellipse(TILE_SIZE * .3125, TILE_SIZE * .26);
         bg.setFill(Color.BLACK);
 
@@ -47,7 +46,9 @@ public class Piece extends StackPane
 
         // paint piece red or black
         Ellipse ellipse = new Ellipse(TILE_SIZE * .3125, TILE_SIZE * .26);
+        // Paint Kings special color
         ellipse.setFill(type == PieceType.RED ? Color.RED : Color.WHITE);
+        // ternary
 
         // paint shadow of piece
         ellipse.setStroke(Color.BLACK);
@@ -59,6 +60,7 @@ public class Piece extends StackPane
 
         getChildren().addAll(bg, ellipse);
 
+        // Lambda
         setOnMousePressed(e -> {
             mouseX = e.getSceneX();
             mouseY = e.getSceneY();
@@ -70,6 +72,7 @@ public class Piece extends StackPane
     }
 
     public void move(int x, int y) {
+        // legal move made relocate the moved piece
         oldX = x * TILE_SIZE;
         oldY = y * TILE_SIZE;
         relocate(oldX, oldY);
