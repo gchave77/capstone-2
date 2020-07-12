@@ -5,7 +5,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import static myCheckers.Board.*;
 
-public class CheckersApp extends Application
+public class App extends Application
 {
 
     public static void main(String[] args)
@@ -17,7 +17,7 @@ public class CheckersApp extends Application
     public void start(Stage primaryStage)
     {
         Scene scene = new Scene(createContent(pieceGroup, tileGroup));
-        primaryStage.setTitle("My CheckersApp");
+        primaryStage.setTitle("My App");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
