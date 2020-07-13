@@ -3,13 +3,13 @@ package myCheckers;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
-import static myCheckers.Board.TILE_SIZE;
 
 
 public class Piece extends StackPane
 {
     private PieceType type;
 
+    // how we track the mouse clicked coordinates and the old coordinates
     private double mouseX, mouseY;
     private double oldX, oldY;
 
@@ -33,48 +33,50 @@ public class Piece extends StackPane
         move(x, y);
 
         // create checkers with Class import of TILE_SIZE
-        Ellipse bg = new Ellipse(TILE_SIZE * .3125, TILE_SIZE * .26);
+        Ellipse bg = new Ellipse(Board.TILE_SIZE * .3125, Board.TILE_SIZE * .26);
         bg.setFill(Color.BLACK);
 
         // paint background of piece
         bg.setStroke(Color.BLACK);
-        bg.setStrokeWidth(TILE_SIZE * .03);
+        bg.setStrokeWidth(Board.TILE_SIZE * .03);
 
         // center background in tile
-        bg.setTranslateX((TILE_SIZE - TILE_SIZE * .3125 * 2 ) /2);
-        bg.setTranslateY((TILE_SIZE - TILE_SIZE * .26 * 2 ) /2 + TILE_SIZE * .07);
+        bg.setTranslateX((Board.TILE_SIZE - Board.TILE_SIZE * .3125 * 2 ) /2);
+        bg.setTranslateY((Board.TILE_SIZE - Board.TILE_SIZE * .26 * 2 ) /2 + Board.TILE_SIZE * .07);
 
         // paint piece red or black
-        Ellipse ellipse = new Ellipse(TILE_SIZE * .3125, TILE_SIZE * .26);
+        Ellipse ellipse = new Ellipse(Board.TILE_SIZE * .3125, Board.TILE_SIZE * .26);
         ellipse.setFill(type == PieceType.RED ? Color.RED : Color.WHITE);
         // ternary
 
         // paint shadow of piece
         ellipse.setStroke(Color.BLACK);
-        ellipse.setStrokeWidth(TILE_SIZE * .03);
+        ellipse.setStrokeWidth(Board.TILE_SIZE * .03);
 
         // center shadow in tile
-        ellipse.setTranslateX((TILE_SIZE - TILE_SIZE * .3125 * 2 ) /2);
-        ellipse.setTranslateY((TILE_SIZE - TILE_SIZE * .26 * 2 ) /2);
+        ellipse.setTranslateX((Board.TILE_SIZE - Board.TILE_SIZE * .3125 * 2 ) /2);
+        ellipse.setTranslateY((Board.TILE_SIZE - Board.TILE_SIZE * .26 * 2 ) /2);
 
         getChildren().addAll(bg, ellipse);
 
-        // Lambda
+        // Lambda to capture mouse clicked coordinates
         setOnMousePressed(e -> {
             mouseX = e.getSceneX();
             mouseY = e.getSceneY();
         });
 
+        // Lambda for the actual mouse movement
+        // * Sets the piece's x,y properties in order to relocate to the new x,y location
         setOnMouseDragged(e -> {
             relocate(e.getSceneX() - mouseX + oldX, e.getSceneY() - mouseY + oldY);
         });
     }
 
     public void move(int x, int y) {
-        // legal move made relocate the moved piece
-        oldX = x * TILE_SIZE;
-        oldY = y * TILE_SIZE;
-        relocate(oldX, oldY);
+        // legal move made, so relocate the moved piece
+        oldX = x * Board.TILE_SIZE;
+        oldY = y * Board.TILE_SIZE;
+        relocate(oldX, oldY); // values come from newX and newY
     }
 
     public void abortMove() {

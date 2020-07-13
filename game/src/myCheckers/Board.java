@@ -9,9 +9,15 @@ import static myCheckers.TryMove.tryMove;
 
 public class Board
 {
-    public static final int TILE_SIZE = 100;
-    public static final int WIDTH = 8;
-    public static final int HEIGHT = 8;
+    static final int TILE_SIZE = 100;
+    private static final int WIDTH = 8;
+    private static final int HEIGHT = 8;
+
+    public static int getTileSize()
+    {
+        // was unable to use outside of this class
+        return TILE_SIZE;
+    }
 
     public static Group tileGroup = new Group();
     public static Group pieceGroup = new Group();

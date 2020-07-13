@@ -1,5 +1,7 @@
 <h1>The Problem Solving Framework : 'UPER'</h1>
 
+<h2>See uperCapstone-2.pptx for UPER</h2>
+
 * U = "Understand"
 * P = "Plan"
 * E = "Execute"

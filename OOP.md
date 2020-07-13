@@ -4,7 +4,7 @@ As you should know by now, there are 4 pillars of Object Oriented Programming.
 
 ********************
 1. Encapsulation
-Encapsulation in Java is a process of wrapping code and data together into a single unit, like a capsule which is mixed of several medicines as mentioned by Sarah. 
+Encapsulation in Java is a process of wrapping code and data together into a single unit, like a capsule which is mixed of several medicines as mentioned by Sarah Bates. 
 The whole idea behind encapsulation is to hide the implementation details from users. If a data member is private it means it can only be accessed within the same class. No outside class can access private data member (variable) of another class. ... That's why encapsulation is known as data hiding.
 
 How to implement encapsulation in java:

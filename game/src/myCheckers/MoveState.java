@@ -2,6 +2,8 @@ package myCheckers;
 
 public class MoveState
 {
+    // keep track of the type of move
+    // and any pieces to be captured
     private MoveType type;
 
     public MoveType getType() {
@@ -14,6 +16,7 @@ public class MoveState
         return piece;
     }
 
+    // for normal moves that don't capture a piece
     public MoveState(MoveType type) {
         this(type, null);
     }
