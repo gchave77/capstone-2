@@ -46,7 +46,6 @@ public class Piece extends StackPane
 
         // paint piece red or black
         Ellipse ellipse = new Ellipse(TILE_SIZE * .3125, TILE_SIZE * .26);
-        // Paint Kings special color
         ellipse.setFill(type == PieceType.RED ? Color.RED : Color.WHITE);
         // ternary
 

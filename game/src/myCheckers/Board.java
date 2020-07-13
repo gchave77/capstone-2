@@ -52,10 +52,10 @@ public class Board
         return root;
     }
 
-    private static Piece makePiece(PieceType type, int x, int y) {
+    public static Piece makePiece(PieceType type, int x, int y) {
         Piece piece = new Piece(type, x, y);
 
-        // Lambda
+        // Lambda method to set piece on board
         piece.setOnMouseReleased(e -> {
             int newX = toBoard(piece.getLayoutX());
             int newY = toBoard(piece.getLayoutY());
