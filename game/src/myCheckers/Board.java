@@ -13,12 +13,6 @@ public class Board
     private static final int WIDTH = 8;
     private static final int HEIGHT = 8;
 
-    public static int getTileSize()
-    {
-        // was unable to use outside of this class
-        return TILE_SIZE;
-    }
-
     public static Group tileGroup = new Group();
     public static Group pieceGroup = new Group();
 
