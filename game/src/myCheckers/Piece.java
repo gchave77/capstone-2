@@ -77,6 +77,7 @@ public class Piece extends StackPane
         oldX = x * Board.TILE_SIZE;
         oldY = y * Board.TILE_SIZE;
         relocate(oldX, oldY); // values come from newX and newY
+
     }
 
     public void abortMove() {

@@ -17,9 +17,11 @@ public class Board
     public static Group pieceGroup = new Group();
 
     public static Tile[][] board = new Tile[WIDTH][HEIGHT];
+    public static Object piece;
 
     protected static Parent createContent(Group pieceGroup, Group tileGroup)
     {
+        // creates the window pane object for the board
         Pane root = new Pane();
         root.setPrefSize(TILE_SIZE * WIDTH, TILE_SIZE * HEIGHT);
 
@@ -35,7 +37,7 @@ public class Board
 
                 Piece piece = null;
 
-                // for rows 0 - 2, set piece type to red and make piece
+                // for rows 0 - 2, set piece type to red and make piece on odd (darker) tiles
                 if (y <= 2 && (x+y) % 2 != 0) {
                     piece = makePiece(PieceType.RED, x, y);
                 }
@@ -55,7 +57,7 @@ public class Board
     public static Piece makePiece(PieceType type, int x, int y) {
         Piece piece = new Piece(type, x, y);
 
-        // Lambda method to get new layout before setting piece on board
+        // Lambda method to get new layout and determine how to handle piece
         piece.setOnMouseReleased(e -> {
             int newX = toBoard(piece.getLayoutX());
             int newY = toBoard(piece.getLayoutY());
@@ -74,7 +76,7 @@ public class Board
             int x0 = toBoard(piece.getOldX());
             int y0 = toBoard(piece.getOldY());
 
-            // validate the attempted move
+            // abort illegal move, or perform normal or capture (jump) move
             switch (result.getType()) {
                 case NONE:
                     // cancel illegal move

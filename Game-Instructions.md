@@ -3,11 +3,17 @@
 Place the instructions for how to play your game in this file.  The instructions should be clear enough for any non-technical computer user to understand and follow.
 
 
-Draughts (British English) or checkers (American English) is a strategy board game for two players which involve diagonal moves of uniform game pieces and mandatory captures by jumping over opponent pieces. This American checkers game will allow for optional jump moves. 
+Draughts (British English) or checkers (American English) is a strategy board game for two players which involve diagonal moves of uniform game pieces and mandatory captures by jumping over opponent pieces. 
 
-The most popular forms are English draughts, also called American checkers, which are played on an 8×8 checkerboard. One player has the dark pieces; the other has the light pieces. Players alternate turns. A player may not move an opponent's piece. A move consists of moving a piece diagonally to an adjacent unoccupied square. If the adjacent square contains an opponent's piece, and the square immediately beyond it is vacant, the piece may be captured (and removed from the game) by jumping over it.
+This American checkers game will allow for optional jump moves. 
 
-Only the dark squares of the checkered board are used. A piece may move only diagonally into an unoccupied square. When presented, capturing is mandatory in most official rules, although some rule variations (like this game) make capturing optional. In almost all variants, the player without pieces remaining, or who cannot move due to being blocked, loses the game. 
+The most popular forms are English draughts, also called American checkers, which are played on an 8×8 checkerboard. One player has the dark pieces; the other has the light pieces. 
+
+Players alternate turns. A player may not move an opponent's piece. A move consists of moving a piece diagonally to an adjacent unoccupied square. If the adjacent square contains an opponent's piece, and the square immediately beyond it is vacant, the piece may be captured (and removed from the game) by jumping over it.
+
+Only the dark squares of the checkered board are used. A piece may move only diagonally into an unoccupied square. When presented, capturing is mandatory in most official rules, although some rule variations (like this game) make capturing optional. 
+
+In almost all variants (including this game), the player without pieces remaining, or who cannot move due to being blocked, loses the game. 
 
 Uncrowned pieces (men) move one step diagonally forwards, and capture an opponent's piece by moving two consecutive steps in the same line, jumping over the piece on the first step. Multiple enemy pieces can be captured in a single turn provided this is done by successive jumps made by a single piece; the jumps do not need to be in the same line and may "zigzag" (change diagonal direction). Men can jump only forwards.
 
