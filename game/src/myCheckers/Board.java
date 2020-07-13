@@ -85,13 +85,13 @@ public class Board
                     board[x0][y0].setPiece(null);
                     board[newX][newY].setPiece(piece);
                     break;
-                case KILL:
-                    // place piece in new position after kill
+                case CAPTURE:
+                    // place piece in new position after capture
                     piece.move(newX, newY);
                     board[x0][y0].setPiece(null);
                     board[newX][newY].setPiece(piece);
 
-                    // remove killed piece
+                    // remove captured piece
                     Piece otherPiece = result.getPiece();
                     board[toBoard(otherPiece.getOldX())][toBoard(otherPiece.getOldY())].setPiece(null);
                     pieceGroup.getChildren().remove(otherPiece);
