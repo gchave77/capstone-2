@@ -55,7 +55,7 @@ public class Board
     public static Piece makePiece(PieceType type, int x, int y) {
         Piece piece = new Piece(type, x, y);
 
-        // Lambda method to set piece on board
+        // Lambda method to get new layout before setting piece on board
         piece.setOnMouseReleased(e -> {
             int newX = toBoard(piece.getLayoutX());
             int newY = toBoard(piece.getLayoutY());
@@ -70,6 +70,7 @@ public class Board
                 result = tryMove(piece, newX, newY);
             }
 
+            // get the previous coordinates in order to clear the tile
             int x0 = toBoard(piece.getOldX());
             int y0 = toBoard(piece.getOldY());
 
@@ -92,7 +93,7 @@ public class Board
                     board[newX][newY].setPiece(piece);
 
                     // remove captured piece
-                    Piece otherPiece = result.getPiece();
+                    Piece otherPiece = result.getPiece(); // opponent's piece passed from TryMove
                     board[toBoard(otherPiece.getOldX())][toBoard(otherPiece.getOldY())].setPiece(null);
                     pieceGroup.getChildren().remove(otherPiece);
                     break;
