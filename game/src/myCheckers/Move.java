@@ -2,7 +2,7 @@ package myCheckers;
 
 import static myCheckers.Board.*;
 
-public class TryMove
+public class Move
 {
     public static MoveState tryMove(Piece piece, int newX, int newY) {
 
