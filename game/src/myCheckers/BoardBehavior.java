@@ -5,9 +5,9 @@ import static myCheckers.Board.pieceGroup;
 import static myCheckers.Move.toBoard;
 import static myCheckers.Move.tryMove;
 
-public interface MoveBehavior
+public interface BoardBehavior
 {
-    public static PieceCoordinates movePiece(PieceType type, int x, int y)
+    public static PieceCoordinates makePiece(PieceType type, int x, int y)
     {
         PieceCoordinates piece = new PieceCoordinates(type, x, y);
 
@@ -59,4 +59,5 @@ public interface MoveBehavior
         return piece;
     }
 
+    void move();
 }

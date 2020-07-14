@@ -1,8 +1,8 @@
 //package myCheckers.cstockton;
 //
-//import myCheckers.MoveBehavior;
+//import myCheckers.BoardBehavior;
 //
-//public class RedMoveBehavior implements MoveBehavior
+//public class RedMoveBehavior implements BoardBehavior
 //{
 //    public static RedMoveBehavior getInstance()
 //    {

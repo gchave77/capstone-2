@@ -1,12 +1,12 @@
 //package myCheckers.cstockton;
 //
-//import myCheckers.MoveBehavior;
+//import myCheckers.BoardBehavior;
 //
 //public abstract class Checker
 //{
-//    private MoveBehavior movebehavior;
+//    private BoardBehavior movebehavior;
 //
-//    public Checker(MoveBehavior moveBehavior)
+//    public Checker(BoardBehavior moveBehavior)
 //    {
 //        this.movebehavior = moveBehavior;
 //    }
@@ -16,7 +16,7 @@
 //        movebehavior.move();
 //    }
 //
-//    public void setMoveBehavior(MoveBehavior moveBehavior)
+//    public void setMoveBehavior(BoardBehavior moveBehavior)
 //    {
 //        this.movebehavior = moveBehavior;
 //    }
