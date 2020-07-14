@@ -5,7 +5,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
 
 
-public class Piece extends StackPane
+public class PieceCoordinates extends StackPane
 {
     private PieceType type;
 
@@ -26,7 +26,7 @@ public class Piece extends StackPane
         return oldY;
     }
 
-    public Piece(PieceType type, int x, int y)
+    public PieceCoordinates(PieceType type, int x, int y)
     {
         this.type = type;
 
@@ -80,6 +80,7 @@ public class Piece extends StackPane
 
     }
 
+    // cancel illegal move
     public void abortMove() {
         relocate(oldX, oldY);
     }

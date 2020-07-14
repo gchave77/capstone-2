@@ -5,25 +5,26 @@ import javafx.scene.shape.Rectangle;
 
 public class Tile extends Rectangle
 {
-    private Piece piece;
+    private PieceCoordinates piece;
 
     public boolean hasPiece()
     {
         return piece != null;
     }
 
-    public Piece getPiece()
+    public PieceCoordinates getPiece()
     {
         return piece;
     }
 
-    public void setPiece(Piece piece)
+    public void setPiece(PieceCoordinates piece)
     {
         this.piece = piece;
     }
 
     public Tile(boolean light, int x, int y)
     {
+        // create the tile objects on the board
         setWidth(Board.TILE_SIZE);
         setHeight(Board.TILE_SIZE);
 

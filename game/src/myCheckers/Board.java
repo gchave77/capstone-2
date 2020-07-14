@@ -34,7 +34,7 @@ public class Board
                 board[x][y] = tile;
                 tileGroup.getChildren().add(tile);
 
-                Piece piece = null;
+                PieceCoordinates piece = null;
 
                 // for rows 0 - 2, set piece type to red and make piece on odd (darker) tiles
                 if (y <= 2 && (x+y) % 2 != 0) {

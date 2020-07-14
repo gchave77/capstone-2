@@ -7,9 +7,9 @@ import static myCheckers.Move.tryMove;
 
 public interface MoveBehavior
 {
-    public static Piece movePiece(PieceType type, int x, int y)
+    public static PieceCoordinates movePiece(PieceType type, int x, int y)
     {
-        Piece piece = new Piece(type, x, y);
+        PieceCoordinates piece = new PieceCoordinates(type, x, y);
 
         // Lambda method to get new layout and determine how to handle piece
         piece.setOnMouseReleased(e -> {
@@ -49,7 +49,7 @@ public interface MoveBehavior
                     board[newX][newY].setPiece(piece);
 
                     // remove captured piece
-                    Piece otherPiece = result.getPiece(); // opponent's piece passed from Move
+                    PieceCoordinates otherPiece = result.getPiece(); // opponent's piece passed from Move
                     board[toBoard(otherPiece.getOldX())][toBoard(otherPiece.getOldY())].setPiece(null);
                     pieceGroup.getChildren().remove(otherPiece);
                     break;

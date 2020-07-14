@@ -10,9 +10,9 @@ public class MoveState
         return type;
     }
 
-    private Piece piece;
+    private PieceCoordinates piece;
 
-    public Piece getPiece() {
+    public PieceCoordinates getPiece() {
         return piece;
     }
 
@@ -21,7 +21,7 @@ public class MoveState
         this(type, null);
     }
 
-    public MoveState(MoveType type, Piece piece) {
+    public MoveState(MoveType type, PieceCoordinates piece) {
         this.type = type;
         this.piece = piece;
     }

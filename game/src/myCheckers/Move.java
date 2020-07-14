@@ -4,7 +4,7 @@ import static myCheckers.Board.*;
 
 public class Move
 {
-    public static MoveState tryMove(Piece piece, int newX, int newY) {
+    public static MoveState tryMove(PieceCoordinates piece, int newX, int newY) {
 
         // don't allow move to an occupied tile, or to an invalid even (light-colored) tile on the board
         if (board[newX][newY].hasPiece() || (newX + newY) % 2 == 0) {
