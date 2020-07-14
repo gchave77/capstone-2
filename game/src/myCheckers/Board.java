@@ -54,7 +54,8 @@ public class Board
         return root;
     }
 
-    public static Piece makePiece(PieceType type, int x, int y) {
+    public static Piece makePiece(PieceType type, int x, int y)
+    {
         Piece piece = new Piece(type, x, y);
 
         // Lambda method to get new layout and determine how to handle piece

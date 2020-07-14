@@ -17,7 +17,7 @@ public class App extends Application
     public void start(Stage primaryStage)
     {
         Scene scene = new Scene(createContent(pieceGroup, tileGroup));
-        primaryStage.setTitle("My App");
+        primaryStage.setTitle("My Checkers App");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
