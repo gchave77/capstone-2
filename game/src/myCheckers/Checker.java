@@ -2,21 +2,21 @@ package myCheckers;
 
 public class Checker
 {
-    private BoardBehavior moveBehavior;
+    private PieceCoordinates pieceCoordinates;
 
-    public Checker(BoardBehavior moveBehavior)
+    public Checker(PieceCoordinates pieceCoordinates)
     {
-        this.moveBehavior = moveBehavior;
+        this.pieceCoordinates = pieceCoordinates;
     }
 
-    public void move()
+    public void move(int x, int y)
     {
-        moveBehavior.move();
+        pieceCoordinates.move(x, y);
     }
 
-    public void setMoveBehavior(BoardBehavior moveBehavior)
+    public void setPieceCoordinates(PieceCoordinates pieceCoordinates)
     {
-        this.moveBehavior = moveBehavior;
+        this.pieceCoordinates = pieceCoordinates;
     }
 
 }
