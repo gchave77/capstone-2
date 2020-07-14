@@ -92,7 +92,9 @@ The aim of inheritance is to provide the reusability of code so that a class has
 ********************
 3. Abstraction
 
-Abstraction is a process where you show only “relevant” data and “hide” unnecessary details of an object from the user. For example, when you login to your Amazon account online, you enter your user_id and password and press login. What happens when you press login, how your data is sent to amazon, and how it gets verified is all abstracted away from the you.
+Abstraction can be used with Inheritance and a process where you show only “relevant” data and “hide” unnecessary details of an object from the user. Or, if the Class functionality will be useful across a wide range of disparate objects, In that case, use an Interface. 
+
+For example, when you login to your Amazon account online, you enter your user_id and password and press login. What happens when you press login, how your data is sent to amazon, and how it gets verified is all abstracted away from the you.
 
 An abstract class can have both abstract and regular methods:
 

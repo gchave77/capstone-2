@@ -6,6 +6,7 @@ import javafx.scene.shape.Ellipse;
 
 public class PieceCoordinates extends StackPane
 {
+    // Encapsulation - outside classes use getter/setter to access
     private PieceType type;
 
     // how we track the mouse clicked coordinates and the old coordinates
@@ -13,6 +14,11 @@ public class PieceCoordinates extends StackPane
     private double oldX, oldY;
 
     public PieceType getType()
+    {
+        return type;
+    }
+
+    public PieceType setType(PieceType type)
     {
         return type;
     }
@@ -83,8 +89,4 @@ public class PieceCoordinates extends StackPane
         relocate(oldX, oldY);
     }
 
-    public PieceType setType(PieceType type)
-    {
-        return type;
-    }
 }
