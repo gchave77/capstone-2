@@ -26,7 +26,7 @@ public interface BoardBehavior
                 result = tryMove(piece, newX, newY);
             }
 
-            // get the previous coordinates in order to clear the tile
+            // get the previous coordinates in order to clear the tile, if needed
             int x0 = toBoard(piece.getOldX());
             int y0 = toBoard(piece.getOldY());
 

@@ -4,7 +4,6 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
 
-
 public class PieceCoordinates extends StackPane
 {
     private PieceType type;
@@ -46,8 +45,8 @@ public class PieceCoordinates extends StackPane
 
         // paint piece red or black
         Ellipse ellipse = new Ellipse(Board.TILE_SIZE * .3125, Board.TILE_SIZE * .26);
-        ellipse.setFill(type == PieceType.RED ? Color.RED : Color.WHITE);
-        // ternary
+        ellipse.setFill(type == PieceType.RED ? Color.RED : Color.WHITE); // ternary
+
 
         // paint shadow of piece
         ellipse.setStroke(Color.BLACK);

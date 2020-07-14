@@ -2,13 +2,15 @@ package myCheckers;
 
 public enum PieceType
 {
-//    1 = down, -1 = up, 0 = up or down
-    RED(1), WHITE(-1), RED_KING(0), WHITE_KING(0);
+//    1 = down, -1 = up - aKing (true or false)
+    RED(1, false), WHITE(-1, false);
 
     public int moveDir;
+    public boolean isKing;
 
-    PieceType(int moveDir)
+    PieceType(int moveDir, boolean isKing)
     {
         this.moveDir = moveDir;
+        this.isKing = isKing;
     }
 }

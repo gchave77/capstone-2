@@ -15,7 +15,7 @@ public class Move
         int x0 = toBoard(piece.getOldX());
         int y0 = toBoard(piece.getOldY());
 
-        if (piece.getType().moveDir != 0)
+        if (!piece.getType().isKing)
         {
             // Check absolute value to allow move to valid tile, and in correct direction
             if (Math.abs(newX - x0) == 1 && newY - y0 == piece.getType().moveDir) {
@@ -33,7 +33,7 @@ public class Move
                     return new MoveState(MoveType.CAPTURE, board[x1][y1].getPiece()); // return opponent's piece
                 }
             }
-        } else if (piece.getType().moveDir == 0)
+        } else if (piece.getType().isKing)
         {
             // Check absolute value to allow move to valid tile - direction doesn't apply to Kings
             if (Math.abs(newX - x0) == 1) {
@@ -52,7 +52,11 @@ public class Move
                 }
             }
 
-        } else return new MoveState(MoveType.NONE);
+        } else try {
+                return new MoveState(MoveType.NONE);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
         // default is no move
         return new MoveState(MoveType.NONE);
