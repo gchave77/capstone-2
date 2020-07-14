@@ -17,6 +17,11 @@ public class PieceCoordinates extends StackPane
         return type;
     }
 
+    public void setType(PieceType type)
+    {
+        this.type = type;
+    }
+
     public double getOldX() {
         return oldX;
     }
@@ -76,6 +81,7 @@ public class PieceCoordinates extends StackPane
         oldX = x * Board.TILE_SIZE;
         oldY = y * Board.TILE_SIZE;
         relocate(oldX, oldY); // values come from newX and newY
+
     }
 
     // cancel move
