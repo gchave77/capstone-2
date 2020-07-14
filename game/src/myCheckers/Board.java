@@ -4,7 +4,7 @@ import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.layout.Pane;
 
-import static myCheckers.Pieces.makePiece;
+import static myCheckers.MoveBehavior.makePiece;
 
 public class Board
 {

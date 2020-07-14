@@ -9,7 +9,9 @@ This American checkers game will allow for optional jump moves.
 
 The most popular forms are English draughts, also called American checkers, which are played on an 8×8 checkerboard. One player has the dark pieces; the other has the light pieces. 
 
-Players alternate turns. A player may not move an opponent's piece. A move consists of moving a piece diagonally to an adjacent unoccupied square. If the adjacent square contains an opponent's piece, and the square immediately beyond it is vacant, the piece may be captured (and removed from the game) by jumping over it.
+Players alternate turns. A player may not move an opponent's piece. A move consists of moving a piece diagonally to an adjacent unoccupied square. Click and drag the piece to the diagonal tile where you'd like to move. 
+
+If the adjacent square contains an opponent's piece, and the square immediately beyond it is vacant, the piece may be captured (and removed from the game) by jumping over it. Click and drag the piece to the diagonal tile beyond the opponent's piece you'd like to capture. 
 
 Only the dark squares of the checkered board are used. A piece may move only diagonally into an unoccupied square. When presented, capturing is mandatory in most official rules, although some rule variations (like this game) make capturing optional. 
 
