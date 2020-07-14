@@ -7,7 +7,7 @@ import static myCheckers.Move.tryMove;
 
 public interface MoveBehavior
 {
-    public static Piece makePiece(PieceType type, int x, int y)
+    public static Piece movePiece(PieceType type, int x, int y)
     {
         Piece piece = new Piece(type, x, y);
 

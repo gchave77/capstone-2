@@ -4,7 +4,7 @@ import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.layout.Pane;
 
-import static myCheckers.MoveBehavior.makePiece;
+import static myCheckers.MoveBehavior.movePiece;
 
 public class Board
 {
@@ -38,11 +38,11 @@ public class Board
 
                 // for rows 0 - 2, set piece type to red and make piece on odd (darker) tiles
                 if (y <= 2 && (x+y) % 2 != 0) {
-                    piece = makePiece(PieceType.RED, x, y);
+                    piece = movePiece(PieceType.RED, x, y);
                 }
                 // for rows 5 - 7, set piece type to white and make piece
                 if (y >= 5 && (x+y) % 2 != 0) {
-                    piece = makePiece(PieceType.WHITE, x, y);
+                    piece = movePiece(PieceType.WHITE, x, y);
                 }
                 if (piece != null) {
                     tile.setPiece(piece);
