@@ -7,7 +7,7 @@ import static myCheckers.Move.tryMove;
 
 public interface BoardBehavior
 {
-    public static PieceCoordinates makePiece(PieceType type, int x, int y)
+    public static PieceCoordinates movePiece(PieceType type, int x, int y)
     {
         PieceCoordinates piece = new PieceCoordinates(type, x, y);
 

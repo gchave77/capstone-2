@@ -79,7 +79,7 @@ public class PieceCoordinates extends StackPane
         relocate(oldX, oldY); // values come from newX and newY
     }
 
-    // cancel illegal move
+    // cancel move
     public void abortMove() {
         relocate(oldX, oldY);
     }
