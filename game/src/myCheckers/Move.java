@@ -15,6 +15,18 @@ public class Move
         int x0 = toBoard(piece.getOldX());
         int y0 = toBoard(piece.getOldY());
 
+        // logic checks for red or white pieces reaching its respective King's row,
+        // and sets PieceType to isKing. However, this currently changes all of the
+        // respective player's pieces to isKing, allowing them all to move backwards.
+        // Need to create pieces as an Array in order to isolate each PieceType.
+        if (y0 == 7 && piece.getType().isRed) {
+            piece.setType(PieceType.RED).isKing = true;
+        } else if (y0 == 0 && piece.getType().isWhite) {
+            piece.setType(PieceType.WHITE).isKing = true;
+        }
+
+
+        // Test if piece is not a King yet
         if (!piece.getType().isKing)
         {
             // Check absolute value to allow move to valid tile, and in correct direction
@@ -33,6 +45,7 @@ public class Move
                     return new MoveState(MoveType.CAPTURE, board[x1][y1].getPiece()); // return opponent's piece
                 }
             }
+            // If piece isKing, no need to check for move direction.
         } else if (piece.getType().isKing)
         {
             // Check absolute value to allow move to valid tile - direction doesn't apply to Kings
@@ -52,6 +65,7 @@ public class Move
                 }
             }
 
+            // Error handling when checking if PieceType isKing
         } else try {
                 return new MoveState(MoveType.NONE);
             } catch (Exception e) {

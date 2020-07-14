@@ -30,7 +30,7 @@ public interface BoardBehavior
             int x0 = toBoard(piece.getOldX());
             int y0 = toBoard(piece.getOldY());
 
-            // abort illegal move, or perform normal move or capture (jump) move
+            // abort illegal move, or perform normal move, or capture (jump) move
             switch (result.getType()) {
                 case NONE:
                     // cancel illegal move
